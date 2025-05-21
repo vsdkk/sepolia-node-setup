@@ -9,3 +9,5 @@ This repository provides an automated script to install a full Ethereum node on 
 - WebSocket support (`8546`)
 
 ---
+Specifically for the CPI.TM team
+---
