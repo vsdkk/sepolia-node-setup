@@ -1,0 +1,14 @@
+[Unit]
+Description=Go Ethereum Client - Sepolia Testnet
+After=network.target
+Wants=network.target
+
+[Service]
+User=root
+Type=simple
+ExecStart=/usr/bin/geth --sepolia --http --http.api eth,net,engine,admin --http.addr 0.0.0.0 --http.port 8545 --http.corsdomain "*" --ws --ws.addr 0.0.0.0 --ws.port 8546 --ws.api eth,net,engine --ws.origins "*" --datadir ~/sepolia-node/data/geth --authrpc.addr 0.0.0.0 --authrpc.port 8551 --authrpc.vhosts "*" --authrpc.jwtsecret ~/sepolia-node/data/jwtsecret
+Restart=on-failure
+LimitNOFILE=65535
+
+[Install]
+WantedBy=default.target
