@@ -1,0 +1,14 @@
+[Unit]
+Description=Lighthouse Ethereum Client - Sepolia Testnet
+After=network.target geth-sepolia.service
+Wants=network.target geth-sepolia.service
+
+[Service]
+User=root
+Type=simple
+ExecStart=/root/.cargo/bin/lighthouse bn --network sepolia --datadir ~/sepolia-node/data/lighthouse --execution-endpoint http://localhost:8551 --execution-jwt ~/sepolia-node/data/jwtsecret --checkpoint-sync-url https://checkpoint-sync.sepolia.ethpandaops.io --http --http.address 0.0.0.0 --http.port 5052 --metrics --metrics-address 0.0.0.0 --metrics-port 5054
+Restart=on-failure
+LimitNOFILE=65535
+
+[Install]
+WantedBy=default.target
